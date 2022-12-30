@@ -1,12 +1,22 @@
-import { Container, Logo } from './styles';
-import { CaretLeft } from 'phosphor-react-native';
+import { Container, BackButton, BackIcon, Logo } from './styles';
+
 import logoImg from '@assets/logo.png';
 
-export function Header() {
+type Props = {
+  showBackButton?: boolean;
+}
+
+export function Header({ showBackButton = false }: Props) {
   return (
     <Container>
-      <CaretLeft color="#ffffff" size={40} />
+      {showBackButton && (
+        <BackButton >
+          <BackIcon />
+        </BackButton>
+      )
+      }
+
       <Logo source={logoImg} />
-    </Container>
+    </Container >
   );
 }
