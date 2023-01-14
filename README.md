@@ -1,4 +1,5 @@
-# IgniteTeams
+# <img width="50px" align="center" src="https://user-images.githubusercontent.com/44211093/212491376-509f7920-a3ab-4703-8eda-a51859df5ef4.png"/> IgniteTeams
+
 ![Capa](https://user-images.githubusercontent.com/44211093/212490533-7f2a2607-890d-4776-8a71-c0037adc408c.png)
 
 ## 💻 O projeto
