@@ -71,10 +71,11 @@ export function Players() {
       setIsLoading(true);
       const playersByTeam = await playerGetByGroupAndTeam(group, team);
       setPlayers(playersByTeam);
-      setIsLoading(false);
     } catch (error) {
       Alert.alert('Pessoas do time', 'Não foi possível carregas as pessoas do time selecionado.');
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -94,13 +95,13 @@ export function Players() {
       await groupRemoveByName(group);
       navigation.navigate('groups');
     } catch (error) {
-      Alert.alert('Remover Grupo', 'Não foi possível remover o grupo.')
+      Alert.alert('Remover turma', 'Não foi possível removera turma.')
     }
   }
 
   async function handleRemoveGroup() {
     Alert.alert('Remover',
-      'Deseja remover o grupo?',
+      'Deseja remover a turma?',
       [
         { text: 'Não', style: 'cancel' },
         { text: 'Sim', onPress: () => removeGroup() }
