@@ -14,6 +14,7 @@ import { Button } from '@components/Button';
 import { playerGetByGroupAndTeam } from '@storage/player/playerGetByGroupAndTeam';
 import { playerAddByGroup } from '@storage/player/playerAddByGroup';
 import { PlayerStorageDTO } from '@storage/player/PlayerStorageTDO';
+import { playerRemoveByGroup } from '@storage/player/playerRemoveByGroup';
 
 import { AppError } from '@utils/AppError';
 
@@ -70,6 +71,17 @@ export function Players() {
     }
   }
 
+  async function handleRemovePlayer(playerName: string) {
+    try {
+      await playerRemoveByGroup(playerName, group);
+      fetchPlayersByTeam();
+
+    } catch (error) {
+      Alert.alert('Remover pessoa', 'Não foi possível remover a pessoa selecionada.')
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     fetchPlayersByTeam();
   }, [team]);
@@ -122,7 +134,7 @@ export function Players() {
         renderItem={({ item }) => (
           <PlayerCard
             name={item.name}
-            onRemove={() => { console.log(`removendo o player ${item.name}`) }}
+            onRemove={() => handleRemovePlayer(item.name)}
           />
         )}
         ListEmptyComponent={() => (
